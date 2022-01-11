@@ -1,4 +1,6 @@
 import { icons } from "./cells";
+import {addEventToDelButtons} from "./evenListeners/delButton"
+import {addEventToEditButtons} from "./evenListeners/editButton"
 
 const renderTable = (dataset, tableId) => {
     const table = document.getElementById(tableId);
@@ -35,16 +37,14 @@ const renderTable = (dataset, tableId) => {
     });
 
     table.append(tableBody);
+    addEventToEditButtons();
+    addEventToDelButtons();
 }
 
 let dataset = [
-    {name: "Shop", created: "01/10/2022", category: "Task", content: "Buy milk before 04/10/2022", dates: "04/10/2022"},
-    {name: "Shop", created: "01/10/2022", category: "Task", content: "Buy milk before 04/10/2022", dates: "04/10/2022"},
-    {name: "Shop", created: "01/10/2022", category: "Task", content: "Buy milk before 04/10/2022", dates: "04/10/2022"},
-    {name: "Shop", created: "01/10/2022", category: "Task", content: "Buy milk before 04/10/2022", dates: "04/10/2022"},
-    {name: "Shop", created: "01/10/2022", category: "Task", content: "Buy milk before 04/10/2022", dates: "04/10/2022"},
-    {name: "Shop", created: "01/10/2022", category: "Task", content: "Buy milk before 04/10/2022", dates: "04/10/2022"},
-    {name: "Shop", created: "01/10/2022", category: "Task", content: "Buy milk before 04/10/2022", dates: "04/10/2022"},
+    {name: "Shop", created: "12/23/2021", category: "Task", content: "Buy milk before 12/31/2021", dates: "12/31/2021"},
+    {name: "Hometask", created: "01/10/2022", category: "Task", content: "Do hometask before 04/10/2022", dates: "04/10/2022"},
+    {name: "New feature", created: "01/08/2022", category: "Idea", content: "Implement new feature in project", dates: ""},
 ];
 
 export {renderTable, dataset};

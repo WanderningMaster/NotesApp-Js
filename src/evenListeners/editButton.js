@@ -1,5 +1,5 @@
-import {dropdown, currentTime} from './cells';
-import {renderTable, dataset} from './render';
+import {dropdown, currentTime} from '../cells';
+import { renderTable, dataset } from '../render';
 
 const save = (note) => {
     const date = note.getElementsByClassName('created')[0];
@@ -18,7 +18,6 @@ const save = (note) => {
     }
     dataset[index] = {...newNote};
     renderTable(dataset, "table");
-    addEventToEditButtons();
 }
 
 const edit = (event) => {
@@ -55,7 +54,6 @@ const addEventToEditButtons = () => {
     const editButtons = document.querySelectorAll(".bi.bi-pencil");
     editButtons.forEach(element => element.addEventListener('click', edit, true));
 }
-
 const removeEventFromEditButtons = () => {
     const editButtons = document.querySelectorAll(".bi.bi-pencil");
     editButtons.forEach(element => element.removeEventListener('click', edit, true));
