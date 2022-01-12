@@ -18,7 +18,7 @@ thead{
     margin: 0 3px 0 3px;
 }
 
-.bi.bi-pencil:hover, .bi.bi-archive:hover{
+.bi.bi-pencil:hover, .bi.bi-archive:hover, .bi.bi-archive-fill:hover{
     position: relative;
     fill:#3a33ff;
 }

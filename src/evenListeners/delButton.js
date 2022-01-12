@@ -1,11 +1,11 @@
-import { renderTable, dataset } from '../render';
+import { renderTable, table } from '../render';
 
 const del = (event) => {
     const note = event.target.parentElement.parentElement;
     try{
         const index = parseInt(note.className);
-        dataset = dataset.filter((element, i) => index != i);
-        renderTable(dataset, "table");
+        table = table.filter((element, i) => index != i);
+        renderTable(table.filter(element => !element.archieved), "table");
     }catch{
     }
 }

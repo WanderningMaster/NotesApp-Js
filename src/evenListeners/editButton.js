@@ -1,5 +1,5 @@
 import {dropdown, currentTime} from '../cells';
-import { renderTable, dataset } from '../render';
+import { renderTable, table } from '../render';
 
 const save = (note) => {
     const date = note.getElementsByClassName('created')[0];
@@ -12,12 +12,12 @@ const save = (note) => {
 
     const index = parseInt(note.className);
     const newNote = {};
-    for(const key in dataset[index]){
+    for(const key in table[index]){
         const field = note.getElementsByClassName(key)[0];
         newNote[key] = field.innerText;
     }
-    dataset[index] = {...newNote};
-    renderTable(dataset, "table");
+    table[index] = {...newNote};
+    renderTable(table, "table");
 }
 
 const edit = (event) => {
