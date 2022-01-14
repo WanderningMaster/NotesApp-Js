@@ -1,13 +1,13 @@
 import { renderTable, table } from '../render';
 
 const del = (event) => {
-    const note = event.target.parentElement.parentElement;
-    try{
-        const index = parseInt(note.className);
-        table = table.filter((element, i) => index != i);
-        renderTable(table.filter(element => !element.archieved), "table");
-    }catch{
+    let note = event.target.parentElement.parentElement;
+    if(note.className === "icons"){
+        note = note.parentElement;
     }
+    const index = parseInt(note.className);
+    table = table.filter((element, i) => index != i);
+    renderTable(table.filter(element => !element.archieved), "table");
 }
 
 const addEventToDelButtons = () => {

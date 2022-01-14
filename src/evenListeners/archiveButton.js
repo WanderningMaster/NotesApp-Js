@@ -1,4 +1,3 @@
-// bi bi-archive-fill
 import { renderTable, table, archive } from '../render';
 
 const show = (event) => {
@@ -7,9 +6,8 @@ const show = (event) => {
     console.log(caption);
     if(_table.dataset.name === "main"){
         _table.dataset.name = "archive";
-        caption.innerText = "Archieved notes";
+        caption.innerText = "Archived notes";
         renderTable(archive, "table");
-        
     }
     else{
         _table.dataset.name = "main";
@@ -18,33 +16,29 @@ const show = (event) => {
     }
 }
 
-const toarchive = (event) => {
-    const note = event.target.parentElement.parentElement;
+const toArchive = (event) => {
+    let note = event.target.parentElement.parentElement;
+    if(note.className === "icons"){
+        note = note.parentElement;
+    }
     const _table = document.getElementById("table");
-    console.log(note.className);
-        const index = parseInt(note.className);
-        if(!isNaN(index)){
-            if(_table.dataset.name === "main"){
-                archive.push(table[index]);
-                table = table.filter((element, i) => index != i);  
-                renderTable(table, "table");
-            }else{
-                table.push(archive[index]);
-                archive = archive.filter((element, i) => index != i);
-                renderTable(archive, "table");    
-            }
-        }
-        
-        // console.log(dataset);
+    const index = parseInt(note.className);
+    if(_table.dataset.name === "main"){
+        archive.push(table[index]);
+        table = table.filter((element, i) => index != i);  
+        renderTable(table, "table");
+    }else{
+        table.push(archive[index]);
+        archive = archive.filter((element, i) => index != i);
+        renderTable(archive, "table");    
+    }
 }
 
 const addEventToArchiveButtons = () => {
-    // console.log("archive");
     const arhiveButtons = document.querySelectorAll(".bi.bi-archive");
-    arhiveButtons.forEach(element => element.addEventListener('click', toarchive, true));
+    arhiveButtons.forEach(element => element.addEventListener('click', toArchive, true));
 }
 const addEventToShowArchiveButton = () => {
-    // console.log("show");
     const arhiveButton = document.querySelector(".bi.bi-archive-fill");
     arhiveButton.addEventListener('click', show, true);
 }

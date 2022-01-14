@@ -21,33 +21,36 @@ const save = (note) => {
 }
 
 const edit = (event) => {
-    const note = event.target.parentElement.parentElement;
-    try{
-        if(note.contentEditable === "false"){
-        
-            const date = note.getElementsByClassName('created')[0];
-            const category = note.getElementsByClassName('category')[0];
-            const dates = note.getElementsByClassName('dates')[0];
-            const icons = note.getElementsByClassName('icons')[0];
-
-            date.contentEditable = false;
-            category.contentEditable = false;
-            dates.contentEditable = false;
-            icons.contentEditable = false;
-    
-            note.contentEditable = true;
-            
-            category.innerHTML = dropdown;
-        
-            removeEventFromEditButtons();
-            event.target.addEventListener('click', edit, true);
-        }
-        else{
-            note.contentEditable = false;   
-            save(note);
-        }
-    }catch{
+    let note = event.target.parentElement.parentElement;
+    if(note.className === "icons"){
+        note = note.parentElement;
     }
+    if(note.contentEditable === "false"){
+        editMode(note);
+    }
+    else{
+        note.contentEditable = false;   
+        save(note);
+    }
+}
+
+const editMode = (note) => {
+    const date = note.getElementsByClassName('created')[0];
+    const category = note.getElementsByClassName('category')[0];
+    const dates = note.getElementsByClassName('dates')[0];
+    const icons = note.getElementsByClassName('icons')[0];
+
+    date.contentEditable = false;
+    category.contentEditable = false;
+    dates.contentEditable = false;
+    icons.contentEditable = false;
+
+    note.contentEditable = true;
+    
+    category.innerHTML = dropdown;
+
+    removeEventFromEditButtons();
+    note.querySelector(".bi.bi-pencil").addEventListener('click', edit, true);
 }
 
 const addEventToEditButtons = () => {
@@ -59,4 +62,4 @@ const removeEventFromEditButtons = () => {
     editButtons.forEach(element => element.removeEventListener('click', edit, true));
 }
 
-export {addEventToEditButtons};
+export {addEventToEditButtons, editMode};
