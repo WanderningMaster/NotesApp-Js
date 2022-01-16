@@ -1,5 +1,5 @@
 import {dropdown, currentTime} from '../cells';
-import { renderTable, table } from '../render';
+import { renderTable, table, archive, countSummary } from '../render';
 
 const save = (note) => {
     const date = note.getElementsByClassName('created')[0];
@@ -18,6 +18,7 @@ const save = (note) => {
     }
     table[index] = {...newNote};
     renderTable(table, "table");
+    renderTable(countSummary(table, archive), "summary");
 }
 
 const edit = (event) => {

@@ -1,4 +1,4 @@
-import { renderTable, table, archive } from '../render';
+import { renderTable, table, archive, countSummary } from '../render';
 
 const show = (event) => {
     const _table = document.getElementById("table");
@@ -32,6 +32,7 @@ const toArchive = (event) => {
         archive = archive.filter((element, i) => index != i);
         renderTable(archive, "table");    
     }
+    renderTable(countSummary(table, archive), "summary");
 }
 
 const addEventToArchiveButtons = () => {

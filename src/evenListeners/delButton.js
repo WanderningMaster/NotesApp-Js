@@ -1,4 +1,4 @@
-import { renderTable, table } from '../render';
+import { renderTable, table, archive, countSummary } from '../render';
 
 const del = (event) => {
     let note = event.target.parentElement.parentElement;
@@ -8,6 +8,7 @@ const del = (event) => {
     const index = parseInt(note.className);
     table = table.filter((element, i) => index != i);
     renderTable(table.filter(element => !element.archieved), "table");
+    renderTable(countSummary(table, archive), "summary");
 }
 
 const addEventToDelButtons = () => {

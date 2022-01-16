@@ -4,6 +4,7 @@
 .content>input{
     position: absolute; 
     right: 50px;
+    margin-top: -50px;
 }
 thead{
     background-color: gray;
@@ -28,4 +29,7 @@ thead{
 }
 .bi.bi-check-circle:hover{
     fill: green;
+}
+#summary{
+    margin-top: 100px;
 }
