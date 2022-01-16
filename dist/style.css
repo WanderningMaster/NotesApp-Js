@@ -1,0 +1,35 @@
+.content{
+    padding: 50px;
+}
+.content>input{
+    position: absolute; 
+    right: 50px;
+    margin-top: -50px;
+}
+thead{
+    background-color: gray;
+    color: white;
+}
+.bi.bi-pencil, .bi.bi-archive, .bi.bi-trash .bi.bi-check-circle{
+    position: relative;
+    margin: 0 5px 0 5px;
+}
+.bi.bi-archive-fill, .bi.bi-trash-fill{
+    position: relative;
+    margin: 0 3px 0 3px;
+}
+
+.bi.bi-pencil:hover, .bi.bi-archive:hover, .bi.bi-archive-fill:hover{
+    position: relative;
+    fill:#3a33ff;
+}
+.bi.bi-trash:hover{
+    position: relative;
+    fill: red;
+}
+.bi.bi-check-circle:hover{
+    fill: green;
+}
+#summary{
+    margin-top: 100px;
+}
